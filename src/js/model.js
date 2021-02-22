@@ -1,4 +1,3 @@
-import { async } from 'regenerator-runtime';
 import { AJAX } from './helpers.js';
 import { API_URL } from './config.js';
 export const state = {
