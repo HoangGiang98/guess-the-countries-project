@@ -1,25 +1,27 @@
 {
 	"name": "guess_the_country",
 	"version": "1.0.0",
-	"description": "Game to guess countries",
+	"description": "guess-countries-project",
 	"default": "index.html",
 	"scripts": {
 		"start": "parcel index.html",
 		"build": "parcel build index.html --dist-dir ./dist"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/HoangGiang98/guess-the-countries-project.git"
+	},
 	"author": "Giang Vu",
 	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/HoangGiang98/guess-the-countries-project/issues"
+	},
+	"homepage": "https://github.com/HoangGiang98/guess-the-countries-project#readme",
 	"devDependencies": {
-		"@parcel/transformer-css": "^2.0.0-nightly.605",
-		"@parcel/transformer-html": "^2.0.0-nightly.605",
-		"@parcel/transformer-postcss": "^2.0.0-nightly.605",
-		"@parcel/transformer-posthtml": "^2.0.0-nightly.605",
-		"parcel": "^2.0.0-beta.1",
-		"postcss": "^8.2.6"
+		"parcel": "^2.0.0-beta.1"
 	},
 	"dependencies": {
-		"@parcel/bundler-default": "^2.0.0-alpha.3",
-		"core-js": "^3.9.0",
+		"core-js": "^3.8.3",
 		"regenerator-runtime": "^0.13.7"
 	}
 }
