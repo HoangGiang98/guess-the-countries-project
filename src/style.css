@@ -27,7 +27,7 @@ header {
 }
 
 main {
-	height: 100%;
+	height: 120%;
 	color: #eee;
 	display: flex;
 	align-items: center;
@@ -38,7 +38,6 @@ main {
 	width: 45%;
 	display: flex;
 	flex-flow: column;
-	align-items: left;
 }
 .right {
 	width: 55%;
@@ -49,15 +48,12 @@ main {
 
 /* ELEMENTS STYLE */
 h1 {
-	font-size: 3rem;
-	text-align: left;
+	font-size: 2.7rem;
+	text-align: center;
 	position: relative;
 	width: 100%;
-	top: 52%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	border-radius: 0.5rem;
-	margin: 0 4rem;
+	margin: 0 0rem 1rem;
 }
 
 .description {
@@ -68,12 +64,11 @@ h1 {
 	height: 80%;
 }
 
-.btn--play-again {
+.btn--reset {
 	position: relative;
 	top: 2rem;
 	left: 2rem;
 	height: 60%;
-	float: center;
 }
 
 .guess__input {
@@ -128,10 +123,12 @@ h1 {
 }
 
 .countries {
+	margin: 0 auto;
 	display: flex;
 	font-size: 1.6rem;
 	opacity: 0;
 	transition: opacity 1s;
+	justify-content: center;
 }
 
 .country {
@@ -144,16 +141,16 @@ h1 {
 }
 
 .country__img {
-	width: 78%;
+	width: 100%;
 	height: 47%;
 	object-fit: cover;
-	background-color: #eee;
+	background-color: #222; /* #eee; */
 	border-top-left-radius: 0.7rem;
 	border-top-right-radius: 0.7rem;
 }
 
 .country__data {
-	padding: 2rem 1rem 2.5rem 1rem;
+	padding: 1rem 1rem 1rem 1rem;
 }
 
 .country__name {

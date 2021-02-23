@@ -5,6 +5,8 @@ export const state = {
 	index: 0,
 	highscore: 0,
 	score: 0,
+	isRevealed: false,
+	userGuess: '',
 };
 
 const loadCountries = function (data) {
@@ -29,11 +31,9 @@ export const getHighScore = function () {
 	if (storage) state.highscore = +JSON.parse(storage);
 };
 
-const clearHighScore = function () {
+export const clearHighScore = function () {
 	localStorage.clear('highscore');
 };
-
-//clearHighScore();
 
 export const getAllCountries = async function () {
 	try {

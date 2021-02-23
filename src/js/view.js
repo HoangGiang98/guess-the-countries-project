@@ -1,5 +1,6 @@
 const INIT_MESSAGE = 'Start guessing...';
-
+const PLAY_BTN_CONTENT = 'New Game!';
+const GUESS_BTN_INIT_CONTENT = 'Guess!';
 const message = document.querySelector('.message');
 const countriesContainer = document.querySelector('.countries');
 const headerMessage = document.querySelector('h1');
@@ -8,35 +9,59 @@ const highscoreLabel = document.querySelector('.highscore');
 const guessInput = document.querySelector('.guess__input');
 
 export const guessBtn = document.querySelector('.btn--guess');
-export const playBtn = document.querySelector('.btn--play-again');
-export const nextBtn = document.querySelector('.btn--next');
+export const playBtn = document.querySelector('.btn--play-new');
+export const resetBtn = document.querySelector('.btn--reset');
 
 export const getGuessInput = function () {
-	return guessInput.value.trim().toLowerCase();
+	return guessInput.value.trim().replace(/\.+$/, '').toLowerCase();
 };
 
 export const displayMess = function (mess) {
 	message.textContent = mess;
 };
 
-export const renderPlay = function (newCountry, score) {
-	renderNewGame(score);
-	guessBtn.disabled = false;
-	nextBtn.disabled = true;
-	renderCountry(newCountry);
+export const displayHighScore = function (highscore) {
+	highscoreLabel.textContent = highscore;
 };
 
+export const renderPreLoad = function (highscore) {
+	highscoreLabel.textContent = highscore;
+	playBtn.textContent = 'Loading!';
+	playBtn.disabled = true;
+	resetBtn.disabled = true;
+	guessBtn.disabled = true;
+};
+
+export const renderPostLoad = function () {
+	playBtn.disabled = false;
+	resetBtn.disabled = false;
+	playBtn.textContent = PLAY_BTN_CONTENT;
+};
+
+export const renderNewGame = function (newCountry, score) {
+	message.textContent = INIT_MESSAGE;
+	message.style.color = '#eee';
+	guessBtn.textContent = GUESS_BTN_INIT_CONTENT;
+	scoreLabel.textContent = score;
+	guessInput.value = '';
+	guessBtn.disabled = false;
+	resetBtn.disabled = true;
+	renderCountry(newCountry);
+};
+//
 export const renderRightGuess = function (state) {
 	const message =
 		state.index === state.allCountries.length - 1
 			? '🔥 You win!'
-			: `👍 Correct! Space to continue`;
+			: `👍 Correct! Good Guess`;
 	displayMess(message);
+	guessBtn.textContent = 'Continue!';
 	scoreLabel.textContent = state.score;
 	highscoreLabel.textContent = state.highscore;
-	nextBtn.disabled =
+	guessBtn.disabled =
 		state.index === state.allCountries.length - 1 ? true : false;
-	guessBtn.disabled = true;
+	resetBtn.disabled =
+		state.index === state.allCountries.length - 1 ? false : true;
 	renderCountry(state.allCountries[state.index], true);
 };
 
@@ -44,8 +69,7 @@ export const renderNext = function (nextCountry) {
 	guessInput.value = '';
 	displayMess(INIT_MESSAGE);
 	renderCountry(nextCountry);
-	guessBtn.disabled = false;
-	nextBtn.disabled = true;
+	guessBtn.textContent = GUESS_BTN_INIT_CONTENT;
 };
 
 export const renderWrongGuess = function (country, score) {
@@ -53,27 +77,8 @@ export const renderWrongGuess = function (country, score) {
 	message.style.color = '#FF0000';
 	scoreLabel.textContent = score;
 	guessBtn.disabled = true;
+	resetBtn.disabled = false;
 	renderCountry(country, true);
-};
-export const renderPreLoad = function (highscore) {
-	highscoreLabel.textContent = highscore;
-	playBtn.textContent = 'Loading';
-	playBtn.disabled = true;
-	nextBtn.disabled = true;
-	guessBtn.disabled = true;
-};
-
-export const renderPostLoad = function () {
-	playBtn.disabled = false;
-	playBtn.textContent = 'Play!';
-};
-
-export const renderNewGame = function (score) {
-	message.textContent = INIT_MESSAGE;
-	playBtn.textContent = 'Again!';
-	scoreLabel.textContent = score;
-	guessInput.value = '';
-	message.style.color = '#eee';
 };
 
 export const renderError = function (err) {

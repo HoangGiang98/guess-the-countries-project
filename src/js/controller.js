@@ -17,34 +17,39 @@ const init = async function () {
 	}
 };
 
-const controlNext = function (e) {
-	try {
-		if (e.code !== 'Space' || view.nextBtn.disabled) return;
-		model.state.index += 1;
-		view.renderNext(model.state.allCountries[model.state.index]);
-	} catch (err) {
-		view.renderError(err);
-	}
-};
-
-const controlPlay = function () {
+const controlPlay = function (e) {
+	e.preventDefault();
 	this.blur();
 	model.state.index = 0;
 	model.state.score = 0;
+	model.state.isRevealed = false;
+	model.state.userGuess = '';
 	shuffleArray(model.state.allCountries);
-	view.renderPlay(
+	view.renderNewGame(
 		model.state.allCountries[model.state.index],
 		model.state.score
 	);
 };
 
 const rightGuessActions = function () {
-	model.state.score += 1;
-	if (model.state.score > model.state.highscore) {
-		model.state.highscore = model.state.score;
-		model.saveHighScore();
+	try {
+		if (model.state.isRevealed) {
+			model.state.userGuess = '';
+			model.state.index += 1;
+			view.renderNext(model.state.allCountries[model.state.index]);
+			model.state.isRevealed = false;
+			return;
+		}
+		model.state.score += 1;
+		if (model.state.score > model.state.highscore) {
+			model.state.highscore = model.state.score;
+			model.saveHighScore();
+		}
+		view.renderRightGuess(model.state);
+		model.state.isRevealed = true;
+	} catch (err) {
+		view.renderError(err);
 	}
-	view.renderRightGuess(model.state);
 };
 
 const wrongGuessActions = function () {
@@ -63,14 +68,23 @@ const controlGuess = function (e) {
 		.trim()
 		.toLowerCase();
 
-	const guess = view.getGuessInput();
+	model.state.userGuess =
+		model.state.userGuess === '' ? view.getGuessInput() : model.state.userGuess;
 	// No input
-	if (guess.length === 0) view.displayMess('⛔️ No input! Misclick?');
-	else if (guess === curCountry) rightGuessActions();
-	else if (guess !== curCountry) wrongGuessActions();
+	if (model.state.userGuess.length === 0)
+		view.displayMess('⛔️ No input! Misclick?');
+	else if (model.state.userGuess === curCountry) rightGuessActions();
+	else if (model.state.userGuess !== curCountry) wrongGuessActions();
+};
+
+const controlReset = function (e) {
+	this.blur();
+	model.state.highscore = 0;
+	model.clearHighScore();
+	view.displayHighScore(model.state.highscore);
 };
 
 window.addEventListener('load', init);
 view.playBtn.addEventListener('click', controlPlay);
 view.guessBtn.addEventListener('click', controlGuess);
-document.addEventListener('keypress', controlNext);
+view.resetBtn.addEventListener('click', controlReset);

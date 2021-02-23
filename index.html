@@ -4,36 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<!-- <link
-			href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
-			rel="stylesheet"
-		/> -->
+
 		<link
 			href="https://fonts.googleapis.com/css?family=DotGothic16&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="src/style.css" />
-		<script defer src="src/js/script.js"></script>
+		<script defer src="src/js/controller.js"></script>
 		<title>Guess the country!</title>
 	</head>
 	<body>
 		<header>
-			<button class="btn btn--play-again">Play!</button>
+			<button class="btn btn--reset">Reset highscore!</button>
 			<p class="description">Guess countries around the world</p>
 		</header>
 		<main>
 			<section class="left">
-				<h1>Guess the country!</h1>
-				<div class="countries">
-					<!-- <article class="country">
-						<img class="country__img" src="" />
-						<div class="country__data">
-							<h3 class="country__name"><span>Country:</span>VietNam</h3>
-							<h4 class="country__region"><span>REGION:</span>Asia</h4>
-							<p class="country__row"><span>Population:</span>POP people</p>
-							<p class="country__row"><span>Currency:</span>CUR</p>
-						</div>
-					</article> -->
+				<div class="left--container">
+					<h1>Guess the country!</h1>
+					<div class="countries">
+						<!-- <article class="country">
+							<img class="country__img" src="" />
+							<div class="country__data">
+								<h3 class="country__name"><span>Country:</span>VietNam</h3>
+								<h4 class="country__region"><span>REGION:</span>Asia</h4>
+								<p class="country__row"><span>Population:</span>POP people</p>
+								<p class="country__row"><span>Currency:</span>CUR</p>
+							</div>
+						</article> -->
+					</div>
 				</div>
 			</section>
 			<section class="right">
@@ -45,7 +44,7 @@
 						class="guess__input"
 					/>
 					<button class="btn btn--guess">Guess!</button>
-					<button class="btn btn--next">➡️</button>
+					<button class="btn btn--play-new">New game!</button>
 				</form>
 				<p class="label-score">🏁 Score: <span class="score">0</span></p>
 				<p class="label-highscore">
