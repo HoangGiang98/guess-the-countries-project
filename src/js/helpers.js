@@ -1,5 +1,5 @@
 import { TIMEOUT_SEC } from './config.js';
-
+import { async } from 'regenerator-runtime';
 export const shuffleArray = function (array) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));

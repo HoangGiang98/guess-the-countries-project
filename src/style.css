@@ -27,7 +27,7 @@ header {
 }
 
 main {
-	height: 120%;
+	height: 126%;
 	color: #eee;
 	display: flex;
 	align-items: center;
@@ -47,14 +47,6 @@ main {
 }
 
 /* ELEMENTS STYLE */
-h1 {
-	font-size: 2.7rem;
-	text-align: center;
-	position: relative;
-	width: 100%;
-	border-radius: 0.5rem;
-	margin: 0 0rem 1rem;
-}
 
 .description {
 	font-size: 3rem;
@@ -122,8 +114,16 @@ h1 {
 	margin-bottom: 1rem;
 }
 
+h1 {
+	font-size: 3rem;
+	text-align: center;
+	position: relative;
+	width: 100%;
+	border-radius: 0.5rem;
+	margin: 0 0rem 1rem;
+}
+
 .countries {
-	margin: 0 auto;
 	display: flex;
 	font-size: 1.6rem;
 	opacity: 0;
@@ -133,18 +133,20 @@ h1 {
 
 .country {
 	text-align: left;
+	box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
 	font-size: 1.6rem;
-	width: 78%;
-	border-radius: 0.2rem;
-	margin: 0 4rem;
+	width: 70%;
+
+	border-radius: 0.7rem;
+	margin: 0 3rem;
 	color: rgb(255, 255, 255);
 }
 
 .country__img {
 	width: 100%;
-	height: 47%;
+	height: 60%;
 	object-fit: cover;
-	background-color: #222; /* #eee; */
+	background-color: #eee; /* #eee; */
 	border-top-left-radius: 0.7rem;
 	border-top-right-radius: 0.7rem;
 }

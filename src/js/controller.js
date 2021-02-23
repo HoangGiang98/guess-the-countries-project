@@ -5,7 +5,7 @@ import * as view from './view.js';
 import * as model from './model.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-
+import { async } from 'regenerator-runtime/runtime';
 const init = async function () {
 	try {
 		model.getHighScore();

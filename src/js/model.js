@@ -1,5 +1,6 @@
 import { AJAX } from './helpers.js';
 import { API_URL } from './config.js';
+import { async } from 'regenerator-runtime';
 export const state = {
 	allCountries: [],
 	index: 0,
