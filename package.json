@@ -18,7 +18,8 @@
 	},
 	"homepage": "https://github.com/HoangGiang98/guess-the-countries-project#readme",
 	"devDependencies": {
-		"parcel": "^2.0.0-beta.1"
+		"parcel": "^2.0.0-beta.1",
+		"sass": "^1.32.8"
 	},
 	"dependencies": {
 		"core-js": "^3.8.3",
